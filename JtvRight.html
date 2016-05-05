@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>嵌入測試 Ver.1 heroku test</title>
+
+   <meta charset="utf-8">
+
+  
+  <style type="text/css">
+		body{background-color: gray; font-family: "微軟正黑體";}
+		//table{border:1em dotted darkblue; font-family: "微軟正黑體", "sans-serif";}
+		.titlebottom{border-bottom-style:dotted;}
+		.thtitle{font-size:36px; background-color: black;}
+		.title{
+				font-size:24px;
+				color:darkblue;
+				
+				}
+		
+		.chatpopout {
+					color: darkblue; 
+					text-decoration: none;
+					}
+		#livetextdiv{text-align:center;}
+		
+		
+		
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	box-shadow:inset 0px 1px 0px 0px #54a3f7;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #007dc1), color-stop(1, #0061a7));
+	background:-moz-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-webkit-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-o-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:-ms-linear-gradient(top, #007dc1 5%, #0061a7 100%);
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#007dc1', endColorstr='#0061a7',GradientType=0);
+	background-color:#007dc1;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:13px;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0061a7), color-stop(1, #007dc1));
+	background:-moz-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-webkit-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-o-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:-ms-linear-gradient(top, #0061a7 5%, #007dc1 100%);
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0061a7', endColorstr='#007dc1',GradientType=0);
+	background-color:#0061a7;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+		
+      </style>
+		
+      <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	  <script src="jquery.sticky-kit.js"></script>
+	  
+	  
+	  <script>
+	  
+		function changeIframe() 
+		{
+			var height = $(window).height()*0.9;
+			$("#broadcastif").attr('height',height+'px');
+			$("#chat_embed2").attr('height',(height*0.9)+'px');
+		}
+		$( document ).ready(function() {
+			
+			$(window).resize(changeIframe);
+			$("#broadcastif").load(changeIframe);
+			$("#chat_embed2").load(changeIframe);
+			//chat_embed2
+			
+			$("#ttvbtn").click(function(){
+				var id = $("#ttvid").val();
+				console.log(id);
+				//$("#livediv").empty();
+				$("#broadcastif").attr('src','http://www.twitch.tv/'+id+'/embed');
+			});
+			$("#hbbtn").click(function(){
+				var id = $("#hbid").val();
+				//$("#livediv").empty();
+				//$("#livediv").html('<iframe width="100%" height="830" src="http://hitbox.tv/#!/embed/'+id+'" frameborder="0" allowfullscreen></iframe>');
+				$("#broadcastif").attr('src','http://hitbox.tv/#!/embed/'+id);
+			});
+			
+			$("#captainbtn").click(function(){
+				
+				//$("#livediv").empty(); mistakelolz
+				$("#broadcastif").attr('src','http://www.twitch.tv/mistakelolz/embed');
+			});
+			
+			$("#smallbeanbtn").click(function(){
+				
+				//$("#livediv").empty();
+				//$("#livediv").html('<iframe width="100%" height="830" src="http://hitbox.tv/#!/embed/MaiWaifuAzusaAzuki" frameborder="0" allowfullscreen></iframe>');
+				$("#broadcastif").attr('src','http://hitbox.tv/#!/embed/MaiWaifuAzusaAzuki');
+			});
+			
+			$("#ggctube").click(function(){
+				
+				//$("#livediv").empty();
+				//$("#livediv").html('<iframe width="100%" height="830" src="http://www.azubu.tv/azubulink/embed=Faker" frameborder="0" allowfullscreen></iframe>');
+				$("#broadcastif").attr('src','http://www.azubu.tv/azubulink/embed=Faker');
+			});
+			
+			$("#riottube").click(function(){
+				
+				//$("#livediv").empty();
+				//$("#livediv").html('<iframe src="http://www.twitch.tv/riotgames/embed" frameborder="0" scrolling="no" height="830" width="100%"></iframe>');
+				$("#broadcastif").attr('src','http://www.twitch.tv/riotgames/embed');
+			});
+			
+			$("#azbriot").click(function(){
+				
+				//$("#livediv").empty();
+				//$("#livediv").html('<iframe width="100%" height="830" src="http://www.azubu.tv/azubulink/embed=Riot_Games" frameborder="0" allowfullscreen></iframe>');
+				$("#broadcastif").attr('src','http://www.twitch.tv/garenatw/embed');
+			});
+
+		});
+		
+		
+	  </script>
+	  
+</head>
+<body>
+<table align="center" width="100%" border = "0">
+
+  <thead>
+	  <tr>
+		<th colspan = "4">LMS 2015 Championship Summer</th>
+	  </tr>
+  <tr>
+	<td>
+		<div id = "livetextdiv">
+			<span class="title">TTV:</span>
+			<input id = "ttvid" type = "text"/>
+			<input id = "ttvbtn" type = "button" value="換實況" class = "myButton"/>
+		</div>
+	</td>
+	<td>
+		<div id = "livetextdiv">
+			<span class="title">HitBox:</span>
+			<input id = "hbid" type = "text"/>
+			<input id = "hbbtn" type = "button" value="換實況" class = "myButton"/>
+		</div>
+	</td>
+	
+	<td>
+		<div id = "livetextdiv">
+			<span class="title">其他:</span>
+			<input id = "ggctube" type = "button" value="FAKER" class = "myButton"/>
+			<input id = "riottube" type = "button" value="RiotTTV" class = "myButton"/>
+		</div>
+	</td>
+	
+	<td>
+		<div id = "livetextdiv">
+			<span class="title">實況:</span>
+			<input id = "captainbtn" type = "button" value="隊長台" class = "myButton"/>
+			<input id = "smallbeanbtn" type = "button" value="小豆台" class = "myButton"/>
+			<input id = "azbriot" type = "button" value="LMS TTV" class = "myButton"/>
+		</div>
+	</td>
+  </tr>
+  </thead> 
+  <tfoot> 
+	 
+  </tfoot> 
+  <tbody>
+    <tr>
+		<td rowspan="2" colspan="3">
+		<div id = "livediv">
+			<iframe id="broadcastif" src="http://www.twitch.tv/garenatw/embed" width="100%" ></iframe>
+		</div>
+	  </td>
+      <td class="titlebottom" align="center" width="360">
+	  <span class="title">小豆HB聊天室</span> </td>
+	  
+    </tr>
+    <tr>
+      <td> <iframe id="chat_embed2" name="I1" src="http://www.hitbox.tv/embedchat/MaiWaifuAzusaAzuki" align="middle" frameborder="0" height="720" scrolling="no" width="100%">
+      </iframe> <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body></html>
