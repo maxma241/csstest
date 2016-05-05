@@ -8,7 +8,7 @@ $( document ).ready(function() {
 						'order':'date',
 						'channelId':'UCQU5uVTG8h9LToACKrm1LMA',
 						'q': "完整版",
-						'maxResults':'20',
+						'maxResults':'9',
 						'key':'AIzaSyBIqwwh5UIU9a0Nc4-J3k0C3OI4C5MUCXA'
 					},
 					dataType: 'jsonp',
