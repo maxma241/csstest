@@ -1,0 +1,43 @@
+body{font-family:Microsoft JhengHei;}
+	.bg1 {
+		background: #272727;  
+		background: linear-gradient(to bottom, #272727, #AAAAAA); 
+	}
+	.title-shadow {
+		color:white;
+		text-shadow: 5px 5px 10px #AA0000;
+	}
+	
+	.you{
+		color:black;
+		text-shadow: 2px 2px 25px #FFFFFF;
+		margin-left:100px;
+	}
+	.tube{
+		color:white;
+		margin:5px;
+		border-radius: 8px;
+		background: red;
+	}
+	
+
+	.youtube-img-radius{
+		border-radius: 6px;
+		transition-property: border-radius;
+		transition-duration: .2s, 1s;
+		transition-timing-function: linear, ease-in;
+	}
+	.youtube-img-radius:hover{
+		border-radius: 50%;
+	}
+	
+	.youtube-title-font{
+		font-weight: bold;
+		color: #CFCFCF;
+	}
+	
+	.youtube-description{
+		background-color: #064C54;
+		color: #CFCFCF;
+	}
+	
