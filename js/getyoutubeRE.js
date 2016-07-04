@@ -21,7 +21,7 @@ class OneVideo extends React.Component{
 
 
 
-ReactDom.render(
+ReactDOM.render(
 	<OneVideo />,
 	document.getElementById('mainpage')
 );
