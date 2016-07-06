@@ -68,7 +68,7 @@ class YoutubeList extends React.Component{
 class OneVideo extends React.Component{
     render(){
         return (
-            <div className="col-md4 portfolio-item">
+            <div className="col-md-4 portfolio-item">
                 <a href={this.props.vid} target="_black">
                     <img src={this.props.vimg} alt="" className="img-responsive youtube-img-radius"/>
                 </a>
