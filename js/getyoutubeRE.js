@@ -34,7 +34,7 @@ class YoutubeList extends React.Component{
           });
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.getTvProgramVideos();
     }
 
