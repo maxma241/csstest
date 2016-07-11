@@ -1,3 +1,4 @@
+
         // -YoutubeList
 //    -OneVideo
 
@@ -41,7 +42,7 @@ class YoutubeList extends React.Component{
     
     render(){
         var tvVideos = this.state.data.map(function(videos){
-                            console.log(videos.snippet.thumbnails.high.url);
+                            //console.log(videos.snippet.thumbnails.high.url);
                             var titlestart = videos.snippet.title.indexOf('【');
                             var temp = videos.snippet.title;
                             var title = temp.substr(titlestart);
