@@ -81,10 +81,3 @@ class OneVideo extends React.Component{
         );
     }
 }
-
-
-
-ReactDOM.render(
-    <YoutubeList />,
-    document.getElementById('videosfield')
-);

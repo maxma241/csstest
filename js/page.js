@@ -4,16 +4,22 @@
 		-下半部
 
 */
+import NavTag from 'pagenav.js';
+import {YoutubeList, OneVideo} from 'getyoutubeRE.js';
+
 class Bscomponent extends React.Component {
 	render(){
 		return(
 			<div>
-				<PageHeader/>
-				<VideoField/>
-				<hr/>
-				{/*<Pagination/>
-				<hr/>*/}
-				<Footer/>
+				<NavTag/>
+				<div className="container" id="pageContent">
+					<PageHeader/>
+					<VideoField/>
+					<hr/>
+					{/*<Pagination/>
+					<hr/>*/}
+					<Footer/>
+				</div>
 			</div>
 		);
 	}
@@ -37,6 +43,7 @@ class VideoField extends React.Component{
 	render(){
 		return(
 			<span id="videosfield">
+				<YoutubeList/>
         	</span>
 		);
 	}
@@ -93,5 +100,5 @@ class Footer extends React.Component{
 
 ReactDOM.render(
     <Bscomponent />,
-    document.getElementById('pageContent')
+    document.getElementById('iambody')
 );
