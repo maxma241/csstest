@@ -9,36 +9,15 @@ import {YoutubeList, OneVideo} from 'getyoutubeRE.js';
 
 class Bscomponent extends React.Component {
 
-	render(){
-		var listmethod = <YoutubeList/>;
-		return(
-			<div>
-				<NavTag 
-					getPlay={listmethod.getTvProgramVideos}
-					getRush={listmethod.getTvProgramVideostwo}
-				/>
-				<div className="container" id="pageContent">
-					<PageHeader/>
-					<VideoField/>
-					<hr/>
-					{/*<Pagination/>
-					<hr/>*/}
-					<Footer/>
-				</div>
-			</div>
-		);
-	}
-}
-
-
-        // -YoutubeList
-//    -OneVideo
-
-class YoutubeList extends React.Component{
-    constructor(props){
+	constructor(props){
         super(props);
-        this.state = {data:[],};
+        this.state = {data:[],title:"綜藝玩很大"};
     }
+
+     componentWillMount(){
+        this.getTvProgramVideos();
+    }
+
 
     getTvProgramVideos(){
         console.log("getTvProgramVideos");
@@ -67,7 +46,7 @@ class YoutubeList extends React.Component{
           });
     }
 
-        getTvProgramVideostwo(){
+    getTvProgramVideostwo(){
         console.log("getTvProgramVideostwo");
          $.ajax({
                	url: "https://www.googleapis.com/youtube/v3/search?",
@@ -95,14 +74,53 @@ class YoutubeList extends React.Component{
           });
     }
 
-    componentWillMount(){
-        this.getTvProgramVideos();
+    Play(title){
+		if(title !== undefined){
+			this.setState({title: title});
+			this.getTvProgramVideos();
+		}
     }
 
+	Rush(title){
+		if(title !== undefined){
+			this.setState({title: title});
+			this.getTvProgramVideostwo();
+		}
+	}
 
+	render(){
+
+
+		return(
+			<div>
+				<NavTag 
+					getPlay={this.Play.bind(this)}
+					getRush={this.Rush.bind(this)}
+				/>
+				<div className="container" id="pageContent">
+					<PageHeader pagetitle={this.state.title} />
+					<span id="videosfield">
+						<YoutubeList allvideos={this.state.data}/>
+		        	</span>
+					<hr/>
+					{/*<Pagination/>
+					<hr/>*/}
+					<Footer/>
+				</div>
+			</div>
+		);
+	}
+}
+
+
+        // -YoutubeList
+//    -OneVideo
+
+class YoutubeList extends React.Component{
+    
     
     render(){
-        var tvVideos = this.state.data.map(function(videos){
+        var tvVideos = this.props.allvideos.map(function(videos){
                             //console.log(videos.snippet.thumbnails.high.url);
                             var titlestart = videos.snippet.title.indexOf('【');
                             var temp = videos.snippet.title;
@@ -146,9 +164,27 @@ class OneVideo extends React.Component{
 
 
 class NavTag extends React.Component{
+
+	constructor(props){
+        super(props);
+        this.state = {playtitle:"綜藝玩很大",
+        			  geniustitle:"天才衝衝衝"};
+    }
+
+	getP(e){
+		e.preventDefault();
+		console.log(this);
+		console.log(this.state.playtitle);
+		this.props.getPlay(this.state.playtitle);
+	}
+	getR(e){
+		e.preventDefault();
+		this.props.getRush(this.state.geniustitle);
+	}
+
 	render(){
 		return(
-			<nav id="navtag" className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
 				<div className="container">
 		            <div className="navbar-header">
 		                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -163,13 +199,13 @@ class NavTag extends React.Component{
 		            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		                <ul className="nav navbar-nav">
 		                    <li>
-		                        <a href="#" id="playbig">
-		                        	<span onClick={this.props.getPlay}>綜藝玩很大</span>
+		                        <a href="#" id="playbig" onClick={this.getP.bind(this)}>
+		                        	<span>{this.state.playtitle}</span>
 		                        </a>
 		                    </li>
 							<li>
-		                        <a href="#" id="geniusrush">
-		                        	<span onClick={this.props.getRush}>天才衝衝衝</span>
+		                        <a href="#" id="geniusrush" onClick={this.getR.bind(this)}>
+		                        	<span>{this.state.geniustitle}</span>
 		                        </a>
 		                    </li>
 		                </ul>
@@ -186,8 +222,8 @@ class PageHeader extends React.Component{
 		return(
 			<div className="row">
 	            <div className="col-lg-12">
-	                <h1 className="page-header title-shadow" id="programtitle">綜藝玩很大
-	            
+	                <h1 className="page-header title-shadow" id="programtitle">
+	            		{this.props.pagetitle}
 	                </h1>
 	            </div>
 	        </div>
@@ -195,15 +231,6 @@ class PageHeader extends React.Component{
 	}
 }
 
-class VideoField extends React.Component{
-	render(){
-		return(
-			<span id="videosfield">
-				<YoutubeList/>
-        	</span>
-		);
-	}
-}
 
 class Pagination extends React.Component{
 	render(){
@@ -254,7 +281,7 @@ class Footer extends React.Component{
 }
 
 
-ReactDOM.render(
+var TestDOM = ReactDOM.render(
     <Bscomponent />,
     document.getElementById('iambody')
 );
