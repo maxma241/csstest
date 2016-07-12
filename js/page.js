@@ -122,15 +122,22 @@ class YoutubeList extends React.Component{
     render(){
         var tvVideos = this.props.allvideos.map(function(videos){
                             //console.log(videos.snippet.thumbnails.high.url);
-                            var titlestart = videos.snippet.title.indexOf('【');
-                            var temp = videos.snippet.title;
-                            var title = temp.substr(titlestart);
+                            if(videos.snippet.title.includes('【')){
+                            	 var titlestart = videos.snippet.title.indexOf('【');
+                            	 var temp = videos.snippet.title;
+                           		 var title = temp.substr(titlestart);
+                            }
+                            if(videos.snippet.title.includes('1080P')){
+                            	titlestart = videos.snippet.title.indexOf('1080P');
+                            	temp = videos.snippet.title;
+                           		title = temp.substr(0,titlestart);
+                            }  
                             return(
                                 <OneVideo 
                                     vimg={videos.snippet.thumbnails.high.url}
                                     vtitle={title}
                                     vid={'https://www.youtube.com/watch?v='+videos.id.videoId}
-                                    vds={videos.snippet.description.substring(0,35)}
+                                    vds={videos.snippet.description.substring(0,54)+'...'}
                                     key={videos.id.videoId}
                                 >
                                 </OneVideo>
